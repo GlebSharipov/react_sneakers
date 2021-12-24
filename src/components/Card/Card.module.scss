@@ -1,0 +1,54 @@
+.card {
+  border: 1px solid #cfcdcd;
+  padding: 20px;
+  width: 210px;
+  border-radius: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 40px;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+  }
+
+  .favorite {
+    position: absolute;
+    cursor: pointer;
+  }
+
+  span {
+    font-size: 13px;
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  b {
+    font-size: 14px;
+  }
+
+  h5 {
+    font-weight: 400;
+    font-size: 15px;
+  }
+
+  .button {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #f3f3f3;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .priceSneakers {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

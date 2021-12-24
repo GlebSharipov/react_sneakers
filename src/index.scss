@@ -1,4 +1,4 @@
-.wrapper {
+* {
   * {
     box-sizing: border-box;
     outline: none;
@@ -19,6 +19,10 @@
   }
 }
 
+* {
+  font-family: "Inter", system-ui;
+}
+
 .wrapper {
   background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
@@ -30,10 +34,6 @@
 body {
   margin: 0;
   background-color: #e7f6ff;
-}
-
-* {
-  font-family: "Inter", system-ui;
 }
 
 header {
@@ -60,6 +60,7 @@ header {
   }
   .headerRight {
     display: flex;
+
     .cart {
       margin-right: 5px;
       cursor: pointer;
@@ -88,55 +89,9 @@ header {
 
 .sneakers {
   display: flex;
-}
-.card {
-  border: 1px solid #cfcdcd;
-  padding: 20px;
-  width: 210px;
-  border-radius: 30px;
-  margin-right: 40px;
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-  &:hover {
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
-    transform: translateY(-5px);
-  }
-
-  .favorite {
-    position: absolute;
-    cursor: pointer;
-  }
-
-  span {
-    font-size: 13px;
-    opacity: 0.5;
-    text-transform: uppercase;
-  }
-
-  b {
-    font-size: 14px;
-  }
-
-  h5 {
-    font-weight: 400;
-    font-size: 15px;
-  }
-}
-.cardBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.priceSneakers {
-  display: flex;
-  flex-direction: column;
-}
-.button {
-  background: #ffffff;
-  border-radius: 8px;
-  border: 1px solid #f3f3f3;
-  box-sizing: border-box;
-  cursor: pointer;
+  flex-direction: row;
+  height: auto;
+  flex-wrap: wrap;
 }
 
 .search-block {
@@ -212,6 +167,7 @@ header {
       margin: 0 7px;
     }
   }
+
   .greenButton {
     position: relative;
 

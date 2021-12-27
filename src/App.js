@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -10,39 +11,25 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
-    fetch("https://61c5baa0c003e70017b798a8.mockapi.io/items")
+    axios
+      .get("https://61c5baa0c003e70017b798a8.mockapi.io/items")
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
+        setItems(res.data);
       });
-    fetch("https://61c5baa0c003e70017b798a8.mockapi.io/cart")
+    axios
+      .get("https://61c5baa0c003e70017b798a8.mockapi.io/cart")
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setCartItems(json);
+        setCartItems(res.data);
       });
   }, []);
 
   const onAddToCard = (obj) => {
-    fetch("https://61c5baa0c003e70017b798a8.mockapi.io/cart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(obj),
-    });
-
+    axios.post("https://61c5baa0c003e70017b798a8.mockapi.io/cart", obj);
     setCartItems((prev) => [...prev, obj]);
   };
 
   const onRemoveItem = (id) => {
-    // fetch(`https://61c5baa0c003e70017b798a8.mockapi.io/cart ${id}`, {
-    //   method: "DELETE",
-    // });
-
+    axios.delete(`https://61c5baa0c003e70017b798a8.mockapi.io/cart/${id}`);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 

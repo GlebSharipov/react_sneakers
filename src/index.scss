@@ -99,6 +99,17 @@ header {
   display: flex;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+
+  .clear {
+    position: absolute;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    top: 13px;
+    right: 13px;
+  }
 
   input {
     border: 0;

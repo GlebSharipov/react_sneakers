@@ -13,48 +13,60 @@ function Drawer({ onClose, onRemove, items = [] }) {
             alt="Remove"
           />
         </h2>
-        <div className="items">
-          {items.map((obj) => (
-            <div className="cartItem">
-              <img
-                className="sneakers"
-                width={70}
-                height={70}
-                src={obj.imgeUrl}
-                alt="Sneakers"
-              />
-              <div className="description">
-                <p>{obj.title}</p>
-                <b>{obj.price}</b>
+
+        {items.length > 0 ? (
+          <div className="items">
+            {items.map((obj) => (
+              <div className="cartItem" key={obj.id}>
+                <img
+                  className="sneakers"
+                  width={70}
+                  height={70}
+                  src={obj.imgeUrl}
+                  alt="Sneakers"
+                />
+                <div className="description">
+                  <p>{obj.title}</p>
+                  <b>{obj.price}</b>
+                </div>
+                <img
+                  onClick={() => onRemove(obj.id)}
+                  className="removeBtn"
+                  width={30}
+                  height={30}
+                  src="/img/remove.png"
+                  alt="Remove"
+                />
               </div>
-              <img
-                onClick={() => onRemove(obj.id)}
-                className="removeBtn"
-                width={30}
-                height={30}
-                src="/img/remove.png"
-                alt="Remove"
-              />
+            ))}
+            <div className="cardTotalBlock">
+              <ul>
+                <li>
+                  <span>Итого</span>
+                  <div></div>
+                  <b>21 489 руб.</b>
+                </li>
+                <li>
+                  <span>Налог 5%</span>
+                  <div></div>
+                  <b>1074 руб.</b>
+                </li>
+              </ul>
+              <button className="greenButton">
+                Оформить заказ <img src="/img/arrow.svg" alt="Arrow" />
+              </button>
             </div>
-          ))}
-        </div>
-        <div className="cardTotalBlock">
-          <ul>
-            <li>
-              <span>Итого</span>
-              <div></div>
-              <b>21 489 руб.</b>
-            </li>
-            <li>
-              <span>Налог 5%</span>
-              <div></div>
-              <b>1074 руб.</b>
-            </li>
-          </ul>
-          <button className="greenButton">
-            Оформить заказ <img src="/img/arrow.svg" alt="Arrow" />
-          </button>
-        </div>
+          </div>
+        ) : (
+          <div className="emptyCart">
+            <img height={120} width={120} src="/img/box.png" alt="Box" />
+            <h2> Корзина пустая </h2>
+            <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
+            <button onClick={onClose} className="greenButton">
+              Вернуться назад <img src="/img/arrow.svg" alt="Arrow" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,13 +1,17 @@
+import { Link } from "react-router-dom";
+
 function Header(props) {
   return (
     <header>
-      <div className="headerLeft">
-        <img width={40} height={40} src="/img/logo.png" alt="Logo" />
-        <div>
-          <h3>REACT SNEAKERS</h3>
-          <p className="headerInfo">Магазин лучших кросовок</p>
+      <Link to="/">
+        <div className="headerLeft">
+          <img width={40} height={40} src="/img/logo.png" alt="Logo" />
+          <div>
+            <h3>REACT SNEAKERS</h3>
+            <p className="headerInfo">Магазин лучших кросовок</p>
+          </div>
         </div>
-      </div>
+      </Link>
       <div>
         <ul className="headerRight">
           <li>
@@ -22,13 +26,15 @@ function Header(props) {
             <span className="price">1205 руб.</span>
           </li>
           <li>
-            <img
-              className="heart"
-              width={20}
-              height={20}
-              src="/img/favourites.svg"
-              alt="Heart"
-            />
+            <Link to="/favorites">
+              <img
+                className="heart"
+                width={20}
+                height={20}
+                src="/img/favourites.svg"
+                alt="Favorites"
+              />
+            </Link>
           </li>
           <li>
             <img

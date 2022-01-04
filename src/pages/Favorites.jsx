@@ -1,6 +1,6 @@
 import Card from "../components/Card";
 
-function Favorites ({items, onAddToFavorite, onAddToCard}) {
+function Favorites ({items, onAddToFavorite, onAddToCart}) {
     return (
         <div className="content">
         <div className="search">
@@ -16,7 +16,7 @@ function Favorites ({items, onAddToFavorite, onAddToCard}) {
                 key={item.id}
                 favorited={true}
                 onFavorite={onAddToFavorite}
-                onAddToCard={onAddToCard}
+                onAddToCart={onAddToCart}
                 {...item}
               />
             ))}

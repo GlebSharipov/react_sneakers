@@ -1,12 +1,15 @@
+import React from "react";
+import styles from "./Drawer.module.scss";
+
 function Drawer({ onClose, onRemove, items = [] }) {
   return (
-    <div className="overlay">
-      <div className="drawer">
+    <div className={styles.overlay}>
+      <div className={styles.drawer}>
         <h2>
           Корзина
           <img
             onClick={onClose}
-            className="removeBtn"
+            className={styles.removeBtn}
             width={30}
             height={30}
             src="/img/remove.png"
@@ -15,23 +18,23 @@ function Drawer({ onClose, onRemove, items = [] }) {
         </h2>
 
         {items.length > 0 ? (
-          <div className="items">
+          <div className={styles.items}>
             {items.map((obj) => (
-              <div className="cartItem" key={obj.id}>
+              <div className={styles.cartItem} key={obj.id}>
                 <img
-                  className="sneakers"
+                  className={styles.sneakers}
                   width={70}
                   height={70}
                   src={obj.imgeUrl}
                   alt="Sneakers"
                 />
-                <div className="description">
+                <div className={styles.description}>
                   <p>{obj.title}</p>
                   <b>{obj.price}</b>
                 </div>
                 <img
                   onClick={() => onRemove(obj.id)}
-                  className="removeBtn"
+                  className={styles.removeBtn}
                   width={30}
                   height={30}
                   src="/img/remove.png"
@@ -39,7 +42,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                 />
               </div>
             ))}
-            <div className="cardTotalBlock">
+            <div className={styles.cardTotalBlock}>
               <ul>
                 <li>
                   <span>Итого</span>
@@ -52,17 +55,17 @@ function Drawer({ onClose, onRemove, items = [] }) {
                   <b>1074 руб.</b>
                 </li>
               </ul>
-              <button className="greenButton">
+              <button className={styles.greenButton}>
                 Оформить заказ <img src="/img/arrow.svg" alt="Arrow" />
               </button>
             </div>
           </div>
         ) : (
-          <div className="emptyCart">
+          <div className={styles.emptyCart}>
             <img height={120} width={120} src="/img/box.png" alt="Box" />
             <h2> Корзина пустая </h2>
             <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
-            <button onClick={onClose} className="greenButton">
+            <button onClick={onClose} className={styles.greenButton}>
               Вернуться назад <img src="/img/arrow.svg" alt="Arrow" />
             </button>
           </div>

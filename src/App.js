@@ -13,28 +13,44 @@ function App() {
   const [favorites, setFavorites] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState("");
   const [cartOpened, setCartOpened] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false); //problem
 
   React.useEffect(() => {
-    axios
-      .get("https://61c5baa0c003e70017b798a8.mockapi.io/items")
-      .then((res) => {
-        setItems(res.data);
-      });
-    axios
-      .get("https://61c5baa0c003e70017b798a8.mockapi.io/cart")
-      .then((res) => {
-        setCartItems(res.data);
-      });
-    axios
-      .get("https://61c5baa0c003e70017b798a8.mockapi.io/favorites")
-      .then((res) => {
-        setFavorites(res.data);
-      });
+    async function fetchData() {
+      const cartResponse = await axios.get(
+        "https://61c5baa0c003e70017b798a8.mockapi.io/cart"
+      );
+      const favoriteResponse = await axios.get(
+        "https://61c5baa0c003e70017b798a8.mockapi.io/favorites"
+      );
+      const itemsResponse = await axios.get(
+        "https://61c5baa0c003e70017b798a8.mockapi.io/items"
+      );
+
+      setIsLoading(false);
+
+      setCartItems(cartResponse.data);
+      setFavorites(favoriteResponse.data);
+      setItems(itemsResponse.data);
+    }
+
+    fetchData();
   }, []);
 
-  const onAddToCard = (obj) => {
-    axios.post("https://61c5baa0c003e70017b798a8.mockapi.io/cart", obj);
-    setCartItems((prev) => [...prev, obj]);
+  const onAddToCart = (obj) => {
+    try {
+      if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+        axios.delete(
+          `https://61c5baa0c003e70017b798a8.mockapi.io/cart/${obj.id}`
+        );
+        setCartItems((prev) =>
+          prev.filter((item) => Number(item.id) !== Number(obj.id))
+        );
+      } else {
+        axios.post("https://61c5baa0c003e70017b798a8.mockapi.io/cart", obj);
+        setCartItems((prev) => [...prev, obj]);
+      }
+    } catch (error) {}
   };
 
   const onAddToFavorite = async (obj) => {
@@ -51,7 +67,7 @@ function App() {
         setFavorites((prev) => [...prev, data]);
       }
     } catch (error) {
-      alert("Не удалось добавть в фавориты");
+      alert("Не удалось добавить в избранное");
     }
   };
 
@@ -80,11 +96,13 @@ function App() {
           element={
             <Home
               items={items}
+              cartItems={cartItems}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
               onChangeSearchInput={onChangeSearchInput}
               onAddToFavorite={onAddToFavorite}
-              onAddToCard={onAddToCard}
+              onAddToCart={onAddToCart}
+              isLoading={isLoading}
             />
           }
         />
@@ -94,7 +112,7 @@ function App() {
             <Favorites
               items={favorites}
               onAddToFavorite={onAddToFavorite}
-              onAddToCard={onAddToCard}
+              onAddToCart={onAddToCart}
             />
           }
         />

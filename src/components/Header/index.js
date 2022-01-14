@@ -39,13 +39,15 @@ function Header(props) {
             </Link>
           </li>
           <li>
-            <img
-              className={styles.user}
-              width={20}
-              height={20}
-              src="/img/user.png"
-              alt="User"
-            />
+            <Link to="/user">
+              <img
+                className={styles.user}
+                width={20}
+                height={20}
+                src="/img/user.png"
+                alt="User"
+              />
+            </Link>
           </li>
         </ul>
       </div>

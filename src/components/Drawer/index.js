@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./Drawer.module.scss";
 import Info from "../Info";
-import AppContext from "../../context";
+
+import { useCart } from "../../hooks/useCart";
 import axios from "axios";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function Drawer({ onClose, onRemove, items = [] }) {
-  const { cartItems, setCartItems } = React.useContext(AppContext);
+  const { cartItems, setCartItems, totalPrice } = useCart();
   const [isOrderComplete, setIsOrderComplete] = React.useState(false);
   const [orderId, setOrderId] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -86,12 +87,12 @@ function Drawer({ onClose, onRemove, items = [] }) {
                   <li>
                     <span>Итого</span>
                     <div></div>
-                    <b>21 489 руб.</b>
+                    <b>{totalPrice} руб.</b>
                   </li>
                   <li>
                     <span>Налог 5%</span>
                     <div></div>
-                    <b>1074 руб.</b>
+                    <b>{Math.round((totalPrice / 100) * 5)} руб.</b>
                   </li>
                 </ul>
                 <button

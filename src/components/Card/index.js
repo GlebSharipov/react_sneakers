@@ -15,14 +15,15 @@ function Card({
 }) {
   const { isItemAdded } = React.useContext(AppContext);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
+  const itemObj = { id, parentId: id, title, imgeUrl, price };
 
   const onClickFavotite = () => {
-    onFavorite({ id, title, imgeUrl, price });
+    onFavorite(itemObj);
     setIsFavorite(!isFavorite);
   };
 
   const onClickPlus = () => {
-    onPlus({ id, title, imgeUrl, price });
+    onPlus(itemObj);
   };
 
   return (
@@ -60,16 +61,20 @@ function Card({
           <div className={styles.cardBottom}>
             <div className={styles.priceSneakers}>
               <span>Цена:</span>
-              <b>{price}</b>
+              <b>{price} руб.</b>
             </div>
-            <button className={styles.button} onClick={onClickPlus}>
-              <img
-                width={32}
-                height={32}
-                src={isItemAdded(id) ? "/img/btn-checked.png" : "/img/add.png"}
-                alt="Add"
-              ></img>
-            </button>
+            {onPlus && (
+              <button className={styles.button} onClick={onClickPlus}>
+                <img
+                  width={32}
+                  height={32}
+                  src={
+                    isItemAdded(id) ? "/img/btn-checked.png" : "/img/add.png"
+                  }
+                  alt="Add"
+                ></img>
+              </button>
+            )}
           </div>
         </>
       )}

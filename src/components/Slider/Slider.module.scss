@@ -1,0 +1,46 @@
+.slider {
+  border-radius: 20px;
+  border: 1px solid #cfcdcd;
+  border-color: rgb(218, 216, 216);
+  margin-left: 60px;
+  margin-top: 45px;
+  height: 302px;
+  width: 960px;
+  background-color: #f4efe9;
+}
+.slide {
+  display: flex;
+  .slideLeft {
+    flex-direction: column;
+    .logo {
+      margin-left: 20px;
+      margin-top: 16px;
+      border: 1px;
+      border-radius: 20px;
+    }
+    h2 {
+      font-size: 38px;
+      margin-left: 61px;
+    }
+    button {
+      cursor: pointer;
+      width: 176px;
+      height: 47px;
+      border: 0;
+      font-size: 16px;
+      color: #ffffff;
+      text-transform: uppercase;
+      background: #a5d364;
+      border-radius: 110px;
+      margin-left: 61px;
+
+      &:hover {
+        background: lighten($color: #9dd558, $amount: 5%);
+      }
+
+      &:active {
+        background: darken($color: #9dd558, $amount: 5%);
+      }
+    }
+  }
+}

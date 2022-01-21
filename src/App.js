@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+import Slider from "./components/Slider";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
@@ -140,8 +141,9 @@ function App() {
             onRemove={onRemoveItem}
           />
         )}
-        <Header onClickCart={() => setCartOpened(true)} />
 
+        <Header onClickCart={() => setCartOpened(true)} />
+        <Slider />
         <Routes>
           <Route
             path="/"

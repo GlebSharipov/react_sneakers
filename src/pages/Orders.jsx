@@ -2,6 +2,8 @@ import axios from "axios";
 import React from "react"
 import Card from "../components/Card";
 import AppContext from "../context";
+import { Link } from "react-router-dom";
+
 
 function Orders () {
   const {onAddToFavorite} = React.useContext(AppContext)
@@ -23,16 +25,14 @@ function Orders () {
       }
     })();
   }, []);
-
+    
     return (
         <div className="content">
         <div className="search">
-          <h1>
-           Мои заказы
-          </h1>
+          <h1>Мои заказы</h1>
         </div>
 
-        <div className="sneakers">
+        {orders.length > 0 ? (<div className="sneakers">
         {(isLoading ? [...Array(12)] : orders)
             .map((item, index) => (
               <Card
@@ -44,7 +44,18 @@ function Orders () {
               {...item}
               />
             ))}
-        </div>
+        </div>)
+        : <div className="empty">
+            <img src="/img/smile-orders.png" alt=""/>
+            <h2>У вас нет заказов</h2>
+            <p>Оформите хотя бы один заказ.</p>
+            <Link to="/">
+              <button  className="greenButton">
+                  Вернуться назад <img className="arrow" src="/img/arrow.svg" alt="Arrow" />
+              </button>
+             </Link>
+          </div>
+        }
       </div>
     )
 }

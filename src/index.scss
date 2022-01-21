@@ -83,3 +83,55 @@ body {
   justify-content: space-between;
   margin-bottom: 40px;
 }
+
+.empty {
+  flex: 1;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  p {
+    opacity: 0.6;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 60px;
+  }
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .greenButton {
+    position: relative;
+    width: 325px;
+    height: 55px;
+    background: #9dd558;
+    border-radius: 18px;
+    border: 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+      .arrow {
+        transform: translateX(5px);
+      }
+    }
+    .arrow {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+      transition: transform 0.15s ease-in-out;
+    }
+
+    &:hover {
+      background: lighten($color: #9dd558, $amount: 5%);
+    }
+
+    &:active {
+      background: darken($color: #9dd558, $amount: 5%);
+    }
+  }
+}

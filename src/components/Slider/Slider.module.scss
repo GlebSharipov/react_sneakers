@@ -5,8 +5,9 @@
   border-color: rgb(218, 216, 216);
   margin: 60px;
   margin-bottom: 0;
+  margin-top: 45px;
   height: 302px;
-  width: 960px;
+  max-width: 960px;
   background-color: #f4efe9;
 
   .slideLeft {
@@ -44,7 +45,9 @@
     }
   }
   .imgSlide {
-    display: flex;
-    align-items: center;
+    height: auto;
+    width: 100%;
+    max-width: 720px;
+    border-radius: 0px 20px 20px 0px;
   }
 }

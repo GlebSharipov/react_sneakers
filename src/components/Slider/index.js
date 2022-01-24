@@ -16,9 +16,7 @@ function Slider() {
         <button>Купить</button>
       </div>
 
-      <div className="imgSlide">
-        <img src="/img/slide1.png" alt="Slide" />
-      </div>
+      <img className={styles.imgSlide} src="/img/slide1.png" alt="Slide" />
     </div>
   );
 }

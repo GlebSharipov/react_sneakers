@@ -39,6 +39,8 @@ body {
 .content {
   margin-bottom: 40px;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
 
   h1 {
     margin: 0;

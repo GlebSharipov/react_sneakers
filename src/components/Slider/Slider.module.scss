@@ -1,16 +1,16 @@
-.slider {
+.slide {
+  display: flex;
   border-radius: 20px;
   border: 1px solid #cfcdcd;
   border-color: rgb(218, 216, 216);
-  margin-left: 60px;
-  margin-top: 45px;
+  margin: 60px;
+  margin-bottom: 0;
   height: 302px;
   width: 960px;
   background-color: #f4efe9;
-}
-.slide {
-  display: flex;
+
   .slideLeft {
+    display: flex;
     flex-direction: column;
     .logo {
       margin-left: 20px;
@@ -42,5 +42,9 @@
         background: darken($color: #9dd558, $amount: 5%);
       }
     }
+  }
+  .imgSlide {
+    display: flex;
+    align-items: center;
   }
 }

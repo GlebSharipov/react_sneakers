@@ -36,7 +36,7 @@ function Home ({
         <div className="search">
           <h1>
             {searchValue
-              ? `Поиск по запросу: "${searchValue}" `
+              ? `Поиск по запросу: "${searchValue}"`
               : "Все кроссовки"}
           </h1>
           <div className="search-block">
@@ -56,7 +56,6 @@ function Home ({
             />
           </div>
         </div>
-
         <div className="sneakers">{renderItems()}</div>
       </div>
     );

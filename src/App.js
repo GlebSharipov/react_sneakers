@@ -4,7 +4,7 @@ import axios from "axios";
 
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
-import Slider from "./components/Slider";
+import Promo from "./components/Slider";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
@@ -143,7 +143,7 @@ function App() {
         )}
 
         <Header onClickCart={() => setCartOpened(true)} />
-        <Slider />
+        <Promo />
         <Routes>
           <Route
             path="/"

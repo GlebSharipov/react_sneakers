@@ -54,7 +54,7 @@
 
   .greenButton {
     position: relative;
-    margin-left: 25px;
+    margin-left: 15px;
 
     &:disabled {
       animation: button-loading 0.8s ease-in-out infinite;
@@ -154,11 +154,10 @@
 }
 
 .emptyCart {
-  flex: 1;
-  align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  align-items: center;
+  margin: auto;
   p {
     margin-bottom: 70px;
     text-align: center;
